@@ -2,14 +2,12 @@ package com.example.shoppingcart.controller;
 
 import com.example.shoppingcart.model.Product;
 import com.example.shoppingcart.service.CartService;
-import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/cart")
-@CrossOrigin(origins = "*")
 public class CartController {
 
     private final CartService service;
