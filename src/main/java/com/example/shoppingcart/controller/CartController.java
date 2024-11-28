@@ -2,6 +2,7 @@ package com.example.shoppingcart.controller;
 
 import com.example.shoppingcart.model.Product;
 import com.example.shoppingcart.service.CartService;
+import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -36,5 +37,15 @@ public class CartController {
     @GetMapping("/total")
     public double calculateCartTotal() {
         return service.calculateCartTotal();
+    }
+
+    @GetMapping("/products/sort")
+    public List<Product> getProductsSortedByPrice() {
+        return service.getProductsSortedByPrice();
+    }
+
+    @GetMapping("/products/search")
+    public List<Product> searchProducts(@RequestParam String name) {
+        return service.searchProductsByName(name);
     }
 }

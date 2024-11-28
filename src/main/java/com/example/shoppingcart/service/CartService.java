@@ -3,6 +3,7 @@ package com.example.shoppingcart.service;
 import com.example.shoppingcart.model.Product;
 import com.example.shoppingcart.repository.ProductRepository;
 import jakarta.transaction.Transactional;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -43,5 +44,13 @@ public class CartService {
         }
 
         return total * calculateTax();
+    }
+
+    public List<Product> searchProductsByName(String name) {
+        return productRepository.findByNameContainingIgnoreCase(name);
+    }
+
+    public List<Product> getProductsSortedByPrice() {
+        return productRepository.findAll(Sort.by(Sort.Order.asc("price")));
     }
 }
